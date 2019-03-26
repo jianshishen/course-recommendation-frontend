@@ -149,7 +149,8 @@ class HomePage extends React.Component {
   };
   handleSignout = () => {
     sessionStorage.removeItem("user");
-    history.push("/");
+    // window.location = "/home";
+    history.push("/home");
   };
   handleSidebarClick = event => {
     this.setState({ current: event.target.innerHTML });

@@ -69,7 +69,8 @@ class SignIn extends React.Component {
     const { username, password } = this.state;
     if (username === "Admin" && password === "Password") {
       sessionStorage.setItem("user", "Admin");
-      history.push("/");
+      // window.location = "/home";
+      history.push("/home");
     } else {
       alert("Invalid username or password");
     }
@@ -129,7 +130,9 @@ class SignIn extends React.Component {
           </form>
           <Button
             type="button"
-            href="/register"
+            onClick={() => {
+              history.push("/register");
+            }}
             fullWidth
             variant="contained"
             color="primary"

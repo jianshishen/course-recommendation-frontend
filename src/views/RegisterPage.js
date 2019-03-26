@@ -10,6 +10,7 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import withStyles from "@material-ui/core/styles/withStyles";
+import { history } from "../helpers";
 // import { history } from "../helpers";
 
 const styles = theme => ({
@@ -124,7 +125,9 @@ class RegisterPage extends React.Component {
           </form>
           <Button
             type="button"
-            href="/"
+            onClick={() => {
+              history.push("/home");
+            }}
             fullWidth
             variant="contained"
             color="secondary"
