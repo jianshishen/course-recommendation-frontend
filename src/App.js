@@ -7,7 +7,7 @@ import { PrivateRoute } from "./components";
 class App extends Component {
   render() {
     return (
-      <Router history={history}>
+      <Router history={history} basename="/course-recommendation-frontend">
         <div>
           <PrivateRoute exact path="/" component={HomePage} />
           <Route path="/login" component={SignIn} />
