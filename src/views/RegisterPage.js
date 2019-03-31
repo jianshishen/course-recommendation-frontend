@@ -63,22 +63,7 @@ class RegisterPage extends React.Component {
     const { name, value } = e.target;
     this.setState({ [name]: value });
   };
-  //   handleSubmit = e => {
-  //     e.preventDefault();
 
-  //     this.setState({ submitted: true });
-  //     const { username, password } = this.state;
-  //     if (username === "Admin" && password === "Password") {
-  //       localStorage.setItem("user", "Admin");
-  //       history.push("/");
-  //     } else {
-  //       alert("XD");
-  //     }
-  //     // const { dispatch } = this.props;
-  //     // if (username && password) {
-  //     //     dispatch(userActions.login(username, password));
-  //     // }
-  //   };
   render() {
     const { classes } = this.props;
     return (

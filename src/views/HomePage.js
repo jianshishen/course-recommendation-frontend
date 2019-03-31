@@ -17,13 +17,14 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import BookIcon from "@material-ui/icons/Book";
 import FavoriteIcon from "@material-ui/icons/Favorite";
+import BuildIcon from "@material-ui/icons/Build";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
-import { UnitsTable, Recommendation } from "../components";
+import { UnitsTable, Recommendation, CourseManagement } from "../components";
 import { history } from "../helpers";
 import logo from "../assets/man.jpg";
 
-const drawerWidth = 230;
+const drawerWidth = 250;
 
 const styles = theme => ({
   root: {
@@ -245,6 +246,15 @@ class HomePage extends React.Component {
                 onClick={this.handleSidebarClick}
               />
             </ListItem>
+            <ListItem button>
+              <ListItemIcon>
+                <BuildIcon />
+              </ListItemIcon>
+              <ListItemText
+                primary="Course Management"
+                onClick={this.handleSidebarClick}
+              />
+            </ListItem>
           </List>
         </Drawer>
         <main className={classes.content}>
@@ -263,6 +273,14 @@ class HomePage extends React.Component {
                 Choose a type of recommendation
               </Typography>
               <Recommendation />
+            </div>
+          )}
+          {this.state.current === "Course Management" && (
+            <div>
+              <Typography variant="h4" gutterBottom component="h2">
+                Course Management
+              </Typography>
+              <CourseManagement />
             </div>
           )}
         </main>
