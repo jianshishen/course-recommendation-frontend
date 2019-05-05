@@ -13,18 +13,7 @@ import Chip from "@material-ui/core/Chip";
 import MenuItem from "@material-ui/core/MenuItem";
 import CancelIcon from "@material-ui/icons/Cancel";
 import { emphasize } from "@material-ui/core/styles/colorManipulator";
-
-const suggestions = [
-  { label: "COMP0000" },
-  { label: "COMP0001" },
-  { label: "COMP0002" },
-  { label: "COMP0003" },
-  { label: "COMP0004" },
-  { label: "COMP0005" }
-].map(suggestion => ({
-  value: suggestion.label,
-  label: suggestion.label
-}));
+import courseid from "../assets/courseid";
 
 const styles = theme => ({
   root: {
@@ -196,23 +185,28 @@ const components = {
 
 class Preferences extends React.Component {
   state = {
-    multi: "",
-    chosen: ""
+    loaded: false,
+    multi: undefined,
+    chosen: undefined
   };
 
   handleClick = () => {
-    this.setState({ chosen: this.state.multi });
+    let chosen = [];
+    this.state.multi.forEach(item => {
+      chosen.push(item.value);
+    });
+    this.setState({ loaded: true, chosen: chosen.join(",") });
   };
 
   handleChange = name => value => {
     this.setState({
+      loaded: false,
       [name]: value
     });
   };
 
   render() {
     const { classes } = this.props;
-
     const selectStyles = {
       input: base => ({
         ...base,
@@ -222,7 +216,6 @@ class Preferences extends React.Component {
         }
       })
     };
-
     return (
       <div className={classes.root}>
         <NoSsr>
@@ -235,7 +228,10 @@ class Preferences extends React.Component {
                 shrink: true
               }
             }}
-            options={suggestions}
+            options={courseid.rows.map(suggestion => ({
+              value: suggestion.CourseId,
+              label: `${suggestion.CourseName} (${suggestion.CourseId})`
+            }))}
             components={components}
             value={this.state.multi}
             onChange={this.handleChange("multi")}
@@ -252,7 +248,9 @@ class Preferences extends React.Component {
           </Button>
           <Typography variant="subtitle1">Results:</Typography>
           <br />
-          {this.state.chosen !== "" && <UnitsTable />}
+          {this.state.loaded && (
+            <UnitsTable rec={this.state.chosen} type="recommendation" />
+          )}
         </NoSsr>
       </div>
     );

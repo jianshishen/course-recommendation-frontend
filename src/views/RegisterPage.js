@@ -5,13 +5,13 @@ import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import FormControl from "@material-ui/core/FormControl";
 import Input from "@material-ui/core/Input";
+import Select from "@material-ui/core/Select";
 import InputLabel from "@material-ui/core/InputLabel";
-import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
+import FindInPageIcon from "@material-ui/icons/FindInPage";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import withStyles from "@material-ui/core/styles/withStyles";
-import { history } from "../helpers";
-// import { history } from "../helpers";
+import { history, responseHandler } from "../helpers";
 
 const styles = theme => ({
   main: {
@@ -50,18 +50,43 @@ class RegisterPage extends React.Component {
   constructor(props) {
     super(props);
 
-    // reset login status
-    // this.props.dispatch(userActions.logout());
-
     this.state = {
       username: "",
       password: "",
-      submitted: false
+      level: "ug"
     };
   }
   handleChange = e => {
     const { name, value } = e.target;
     this.setState({ [name]: value });
+  };
+
+  requestData(username, password, level) {
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ username, password, level })
+    };
+    let api =
+      process.env.NODE_ENV === "production"
+        ? `https://backend-dot-courserecommender.appspot.com/register`
+        : `http://localhost:4000/register`;
+
+    fetch(api, requestOptions)
+      .then(responseHandler)
+      .then(() => history.push("/login"))
+      .catch(function(error) {
+        alert(error);
+      });
+  }
+  handleSubmit = e => {
+    e.preventDefault();
+    const { username, password, level } = this.state;
+    if (!isNaN(username)) {
+      this.requestData(username, password, level);
+    } else {
+      alert("The username needs to be an integer");
+    }
   };
 
   render() {
@@ -71,13 +96,12 @@ class RegisterPage extends React.Component {
         <CssBaseline />
         <Paper className={classes.paper}>
           <Avatar className={classes.avatar}>
-            <LockOutlinedIcon />
+            <FindInPageIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
             Register
           </Typography>
-          {/* <form className={classes.form} onSubmit={this.handleSubmit}> */}
-          <form className={classes.form}>
+          <form className={classes.form} onSubmit={this.handleSubmit}>
             <FormControl margin="normal" required fullWidth>
               <InputLabel htmlFor="username">Username</InputLabel>
               <Input
@@ -97,6 +121,18 @@ class RegisterPage extends React.Component {
                 autoComplete="current-password"
                 onChange={this.handleChange}
               />
+            </FormControl>
+            <FormControl margin="normal" fullWidth>
+              <InputLabel htmlFor="level">Level</InputLabel>
+              <Select
+                native
+                name="level"
+                value={this.state.level}
+                onChange={this.handleChange}
+              >
+                <option value="ug">Undergraduate</option>
+                <option value="pg">Postgraduate</option>
+              </Select>
             </FormControl>
             <Button
               type="submit"

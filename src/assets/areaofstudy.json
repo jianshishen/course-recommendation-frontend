@@ -1,0 +1,742 @@
+{
+	"table": "areaofstudy",
+	"rows":
+	[
+		{
+			"AOSId": "ACCT",
+			"AOSName": "Accounting"
+		},
+		{
+			"AOSId": "AERO",
+			"AOSName": "Aeronautical Engineering"
+		},
+		{
+			"AOSId": "AMME",
+			"AOSName": "Aeronautical Mechanical Engineering"
+		},
+		{
+			"AOSId": "GENE",
+			"AOSName": "Agricultural Genetics"
+		},
+		{
+			"AOSId": "AGEN",
+			"AOSName": "Agricultural Genomics"
+		},
+		{
+			"AOSId": "AGRI",
+			"AOSName": "Agronomy"
+		},
+		{
+			"AOSId": "AGRO",
+			"AOSName": "Agronomy"
+		},
+		{
+			"AOSId": "AMST",
+			"AOSName": "American Studies"
+		},
+		{
+			"AOSId": "ANAT",
+			"AOSName": "Anatomy"
+		},
+		{
+			"AOSId": "ANHS",
+			"AOSName": "Ancient History"
+		},
+		{
+			"AOSId": "AVBS",
+			"AOSName": "Animal and Veterinary Bioscience"
+		},
+		{
+			"AOSId": "ANSC",
+			"AOSName": "Animal Science"
+		},
+		{
+			"AOSId": "ANTH",
+			"AOSName": "Anthropology"
+		},
+		{
+			"AOSId": "ARBC",
+			"AOSName": "Arabic Languages and Cultures"
+		},
+		{
+			"AOSId": "ARCO",
+			"AOSName": "Archaeology"
+		},
+		{
+			"AOSId": "ARCH",
+			"AOSName": "Architectural and Design Science (PG)"
+		},
+		{
+			"AOSId": "BAEN",
+			"AOSName": "Architecture and Environment"
+		},
+		{
+			"AOSId": "BDES",
+			"AOSName": "Architecture Studio"
+		},
+		{
+			"AOSId": "ARHT",
+			"AOSName": "Art History"
+		},
+		{
+			"AOSId": "ARIN",
+			"AOSName": "Arts Informatics"
+		},
+		{
+			"AOSId": "ASNS",
+			"AOSName": "Asian Studies"
+		},
+		{
+			"AOSId": "BANK",
+			"AOSName": "Bank Financial Management"
+		},
+		{
+			"AOSId": "BACH",
+			"AOSName": "Behavioural and Community Health Science"
+		},
+		{
+			"AOSId": "BBCL",
+			"AOSName": "Biblical Studies"
+		},
+		{
+			"AOSId": "BCHM",
+			"AOSName": "Biochemistry"
+		},
+		{
+			"AOSId": "BIOL",
+			"AOSName": "Biology"
+		},
+		{
+			"AOSId": "BMET",
+			"AOSName": "Biomedical Engineering"
+		},
+		{
+			"AOSId": "BIOS",
+			"AOSName": "Biomedical Science"
+		},
+		{
+			"AOSId": "BRSS",
+			"AOSName": "Brass"
+		},
+		{
+			"AOSId": "QBUS",
+			"AOSName": "Business Analytics"
+		},
+		{
+			"AOSId": "INFS",
+			"AOSName": "Business Information Systems"
+		},
+		{
+			"AOSId": "CLAW",
+			"AOSName": "Business Law"
+		},
+		{
+			"AOSId": "BUSS",
+			"AOSName": "Business Studies"
+		},
+		{
+			"AOSId": "CPAT",
+			"AOSName": "Cell Pathology"
+		},
+		{
+			"AOSId": "CLST",
+			"AOSName": "Celtic Studies"
+		},
+		{
+			"AOSId": "CHNG",
+			"AOSName": "Chemical Engineering"
+		},
+		{
+			"AOSId": "CHEM",
+			"AOSName": "Chemistry"
+		},
+		{
+			"AOSId": "CHNS",
+			"AOSName": "Chinese Studies"
+		},
+		{
+			"AOSId": "CIVL",
+			"AOSName": "Civil Engineering"
+		},
+		{
+			"AOSId": "CSCD",
+			"AOSName": "Communication Science and Disorders"
+		},
+		{
+			"AOSId": "CSYS",
+			"AOSName": "Complex Systems"
+		},
+		{
+			"AOSId": "CMPN",
+			"AOSName": "Composition"
+		},
+		{
+			"AOSId": "COSC",
+			"AOSName": "Computational Science"
+		},
+		{
+			"AOSId": "COMP",
+			"AOSName": "Computer Science"
+		},
+		{
+			"AOSId": "CRIM",
+			"AOSName": "Criminology"
+		},
+		{
+			"AOSId": "DATA",
+			"AOSName": "Data Science"
+		},
+		{
+			"AOSId": "BADP",
+			"AOSName": "Design and Planning"
+		},
+		{
+			"AOSId": "DECO",
+			"AOSName": "Design Computing"
+		},
+		{
+			"AOSId": "DESA",
+			"AOSName": "Design Science"
+		},
+		{
+			"AOSId": "DESC",
+			"AOSName": "Design Science"
+		},
+		{
+			"AOSId": "DVST",
+			"AOSName": "Development Studies"
+		},
+		{
+			"AOSId": "DAAE",
+			"AOSName": "Digital Architecture"
+		},
+		{
+			"AOSId": "EMUS",
+			"AOSName": "Early Music Principal Study"
+		},
+		{
+			"AOSId": "ECMT",
+			"AOSName": "Econometrics"
+		},
+		{
+			"AOSId": "ECON",
+			"AOSName": "Economics"
+		},
+		{
+			"AOSId": "ECOS",
+			"AOSName": "Economics"
+		},
+		{
+			"AOSId": "EDEC",
+			"AOSName": "Education: Early Childhood"
+		},
+		{
+			"AOSId": "EDUF",
+			"AOSName": "Education: Foundations"
+		},
+		{
+			"AOSId": "EDGU",
+			"AOSName": "Education: General Electives"
+		},
+		{
+			"AOSId": "EDHP",
+			"AOSName": "Education: Health and Physical Education"
+		},
+		{
+			"AOSId": "EDUP",
+			"AOSName": "Education: Primary"
+		},
+		{
+			"AOSId": "EDSE",
+			"AOSName": "Education: Secondary"
+		},
+		{
+			"AOSId": "EDUH",
+			"AOSName": "Education: Secondary-Human Movement"
+		},
+		{
+			"AOSId": "SCWK",
+			"AOSName": "Education: Social Work"
+		},
+		{
+			"AOSId": "ELEC",
+			"AOSName": "Electrical Engineering"
+		},
+		{
+			"AOSId": "EMHU",
+			"AOSName": "Electron Microscopy"
+		},
+		{
+			"AOSId": "ENGG",
+			"AOSName": "Engineering Faculty"
+		},
+		{
+			"AOSId": "ENGL",
+			"AOSName": "English"
+		},
+		{
+			"AOSId": "ENSE",
+			"AOSName": "Ensemble"
+		},
+		{
+			"AOSId": "ENTO",
+			"AOSName": "Entomology"
+		},
+		{
+			"AOSId": "AREC",
+			"AOSName": "Environmental and Resource Economics"
+		},
+		{
+			"AOSId": "ENSC",
+			"AOSName": "Environmental Science"
+		},
+		{
+			"AOSId": "ENVI",
+			"AOSName": "Environmental Science"
+		},
+		{
+			"AOSId": "ENVX",
+			"AOSName": "Environmental Statistics"
+		},
+		{
+			"AOSId": "EUST",
+			"AOSName": "European Studies"
+		},
+		{
+			"AOSId": "EXSS",
+			"AOSName": "Exercise and Sport Science"
+		},
+		{
+			"AOSId": "FINC",
+			"AOSName": "Finance"
+		},
+		{
+			"AOSId": "AFNR",
+			"AOSName": "Food and Natural Resources"
+		},
+		{
+			"AOSId": "FOOD",
+			"AOSName": "Food Science"
+		},
+		{
+			"AOSId": "FRNC",
+			"AOSName": "French Studies"
+		},
+		{
+			"AOSId": "GCST",
+			"AOSName": "Gender and Cultural Studies"
+		},
+		{
+			"AOSId": "GEOL",
+			"AOSName": "Geoscience"
+		},
+		{
+			"AOSId": "GEOS",
+			"AOSName": "Geoscience"
+		},
+		{
+			"AOSId": "GRMN",
+			"AOSName": "German Studies"
+		},
+		{
+			"AOSId": "GOVT",
+			"AOSName": "Government and International Relations"
+		},
+		{
+			"AOSId": "GRKA",
+			"AOSName": "Greek (Ancient) Studies"
+		},
+		{
+			"AOSId": "MGRK",
+			"AOSName": "Greek (Modern) Studies"
+		},
+		{
+			"AOSId": "HSBH",
+			"AOSName": "Health Science"
+		},
+		{
+			"AOSId": "HTIN",
+			"AOSName": "Health Technology Innovation"
+		},
+		{
+			"AOSId": "HBRW",
+			"AOSName": "Hebrew Studies"
+		},
+		{
+			"AOSId": "HSTO",
+			"AOSName": "Histology"
+		},
+		{
+			"AOSId": "HSTY",
+			"AOSName": "History"
+		},
+		{
+			"AOSId": "HPSC",
+			"AOSName": "History and Philosophy of Science"
+		},
+		{
+			"AOSId": "HORT",
+			"AOSName": "Horticultural Science"
+		},
+		{
+			"AOSId": "HRTD",
+			"AOSName": "Human Rights and Democratisation"
+		},
+		{
+			"AOSId": "IMMU",
+			"AOSName": "Immunology"
+		},
+		{
+			"AOSId": "INDG",
+			"AOSName": "Indigenous Studies"
+		},
+		{
+			"AOSId": "INMS",
+			"AOSName": "Indonesian Studies"
+		},
+		{
+			"AOSId": "INFD",
+			"AOSName": "Infectious Diseases"
+		},
+		{
+			"AOSId": "ISYS",
+			"AOSName": "Information Systems"
+		},
+		{
+			"AOSId": "INFO",
+			"AOSName": "Information Technology"
+		},
+		{
+			"AOSId": "IDEA",
+			"AOSName": "Interaction Design and Electronic Arts (PG)"
+		},
+		{
+			"AOSId": "INDP",
+			"AOSName": "Interdisciplinary Projects"
+		},
+		{
+			"AOSId": "IBUS",
+			"AOSName": "International Business"
+		},
+		{
+			"AOSId": "ICLS",
+			"AOSName": "International Comparative Literature"
+		},
+		{
+			"AOSId": "CISS",
+			"AOSName": "International Security Studies"
+		},
+		{
+			"AOSId": "ARTS",
+			"AOSName": "Internship"
+		},
+		{
+			"AOSId": "ITLN",
+			"AOSName": "Italian Studies"
+		},
+		{
+			"AOSId": "JPNS",
+			"AOSName": "Japanese Studies"
+		},
+		{
+			"AOSId": "JAZZ",
+			"AOSName": "Jazz"
+		},
+		{
+			"AOSId": "JCTC",
+			"AOSName": "Jewish Studies"
+		},
+		{
+			"AOSId": "KEYB",
+			"AOSName": "Keyboard"
+		},
+		{
+			"AOSId": "KRNS",
+			"AOSName": "Korean Studies"
+		},
+		{
+			"AOSId": "LATN",
+			"AOSName": "Latin Studies"
+		},
+		{
+			"AOSId": "LAWS",
+			"AOSName": "Law"
+		},
+		{
+			"AOSId": "LNGS",
+			"AOSName": "Linguistics"
+		},
+		{
+			"AOSId": "MARS",
+			"AOSName": "Marine Science"
+		},
+		{
+			"AOSId": "MKTG",
+			"AOSName": "Marketing"
+		},
+		{
+			"AOSId": "MATH",
+			"AOSName": "Mathematics"
+		},
+		{
+			"AOSId": "MECH",
+			"AOSName": "Mechanical Engineering"
+		},
+		{
+			"AOSId": "MTRX",
+			"AOSName": "Mechatronic Engineering"
+		},
+		{
+			"AOSId": "MECO",
+			"AOSName": "Media and Communication"
+		},
+		{
+			"AOSId": "MICR",
+			"AOSName": "Microbiology"
+		},
+		{
+			"AOSId": "MARC",
+			"AOSName": "Modern Architecture (PG)"
+		},
+		{
+			"AOSId": "BCMB",
+			"AOSName": "Molecular Biology"
+		},
+		{
+			"AOSId": "GEGE",
+			"AOSName": "Molecular Biology"
+		},
+		{
+			"AOSId": "QBIO",
+			"AOSName": "Molecular Biology"
+		},
+		{
+			"AOSId": "MCHM",
+			"AOSName": "Molecular Chemistry"
+		},
+		{
+			"AOSId": "MIMI",
+			"AOSName": "Molecular Science"
+		},
+		{
+			"AOSId": "HRTG",
+			"AOSName": "Museum and Hertiage Studies"
+		},
+		{
+			"AOSId": "MHST",
+			"AOSName": "Museum and Hertiage Studies"
+		},
+		{
+			"AOSId": "MUSM",
+			"AOSName": "Museum and Hertiage Studies"
+		},
+		{
+			"AOSId": "MUED",
+			"AOSName": "Music Education"
+		},
+		{
+			"AOSId": "MUSC",
+			"AOSName": "Music Foundations"
+		},
+		{
+			"AOSId": "MCGY",
+			"AOSName": "Musicology"
+		},
+		{
+			"AOSId": "NANO",
+			"AOSName": "Nanoscience"
+		},
+		{
+			"AOSId": "NEUR",
+			"AOSName": "Neurology"
+		},
+		{
+			"AOSId": "NURS",
+			"AOSName": "Nursing"
+		},
+		{
+			"AOSId": "NUTM",
+			"AOSName": "Nutrition"
+		},
+		{
+			"AOSId": "ORGN",
+			"AOSName": "Organ"
+		},
+		{
+			"AOSId": "PACS",
+			"AOSName": "Peace and Conflict Studies"
+		},
+		{
+			"AOSId": "PRCN",
+			"AOSName": "Percussion"
+		},
+		{
+			"AOSId": "PRFM",
+			"AOSName": "Performance Studies"
+		},
+		{
+			"AOSId": "PCOL",
+			"AOSName": "Pharmacology"
+		},
+		{
+			"AOSId": "PHAR",
+			"AOSName": "Pharmacy"
+		},
+		{
+			"AOSId": "PHIL",
+			"AOSName": "Philosophy"
+		},
+		{
+			"AOSId": "PHYS",
+			"AOSName": "Physics"
+		},
+		{
+			"AOSId": "PHSI",
+			"AOSName": "Physiology"
+		},
+		{
+			"AOSId": "PHTY",
+			"AOSName": "Physiotherapy"
+		},
+		{
+			"AOSId": "PLAN",
+			"AOSName": "Planning (Postgraduate)"
+		},
+		{
+			"AOSId": "PPAT",
+			"AOSName": "Plant Pathology"
+		},
+		{
+			"AOSId": "ECOP",
+			"AOSName": "Political Economy"
+		},
+		{
+			"AOSId": "PERF",
+			"AOSName": "Principal Study/Conducting"
+		},
+		{
+			"AOSId": "PMGT",
+			"AOSName": "Project Management"
+		},
+		{
+			"AOSId": "PSYC",
+			"AOSName": "Psychology"
+		},
+		{
+			"AOSId": "REHB",
+			"AOSName": "Rehabilitation"
+		},
+		{
+			"AOSId": "RLST",
+			"AOSName": "Religious Studies"
+		},
+		{
+			"AOSId": "SANS",
+			"AOSName": "Sanskrit Studies"
+		},
+		{
+			"AOSId": "SCPL",
+			"AOSName": "Social Policy"
+		},
+		{
+			"AOSId": "SLSS",
+			"AOSName": "Sociolegal Studies"
+		},
+		{
+			"AOSId": "SCLG",
+			"AOSName": "Sociology"
+		},
+		{
+			"AOSId": "SOFT",
+			"AOSName": "Software Development"
+		},
+		{
+			"AOSId": "SOIL",
+			"AOSName": "Soil Science"
+		},
+		{
+			"AOSId": "SPAN",
+			"AOSName": "Spanish and Latin American Studies"
+		},
+		{
+			"AOSId": "STAT",
+			"AOSName": "Statistics"
+		},
+		{
+			"AOSId": "STRG",
+			"AOSName": "Strings"
+		},
+		{
+			"AOSId": "SUST",
+			"AOSName": "Sustainability"
+		},
+		{
+			"AOSId": "CAEL",
+			"AOSName": "Sydney College of the Arts: Contemporary Arts Electives"
+		},
+		{
+			"AOSId": "MFDI",
+			"AOSName": "Sydney College of the Arts: Contemporary Arts Electives"
+		},
+		{
+			"AOSId": "CATE",
+			"AOSName": "Sydney College of the Arts: Critical Studies"
+		},
+		{
+			"AOSId": "CAJO",
+			"AOSName": "Sydney College of the Arts: Jewellery and Object"
+		},
+		{
+			"AOSId": "CAPA",
+			"AOSName": "Sydney College of the Arts: Painting"
+		},
+		{
+			"AOSId": "CAPH",
+			"AOSName": "Sydney College of the Arts: Photomedia"
+		},
+		{
+			"AOSId": "CAPR",
+			"AOSName": "Sydney College of the Arts: Printmedia"
+		},
+		{
+			"AOSId": "CASA",
+			"AOSName": "Sydney College of the Arts: Screen Arts"
+		},
+		{
+			"AOSId": "CASC",
+			"AOSName": "Sydney College of the Arts: Sculpture"
+		},
+		{
+			"AOSId": "ITLS",
+			"AOSName": "Transport and Logistics"
+		},
+		{
+			"AOSId": "USSC",
+			"AOSName": "US Studies Centre"
+		},
+		{
+			"AOSId": "VIRO",
+			"AOSName": "Virology"
+		},
+		{
+			"AOSId": "VSAO",
+			"AOSName": "Voice"
+		},
+		{
+			"AOSId": "WMST",
+			"AOSName": "Womens Studies"
+		},
+		{
+			"AOSId": "WIND",
+			"AOSName": "Woodwinds"
+		},
+		{
+			"AOSId": "WORK",
+			"AOSName": "Work and Organisational Studies"
+		},
+		{
+			"AOSId": "WRIT",
+			"AOSName": "Writing"
+		}
+	]
+}

@@ -4,15 +4,14 @@ import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import FormControl from "@material-ui/core/FormControl";
-// import FormControlLabel from "@material-ui/core/FormControlLabel";
-// import Checkbox from "@material-ui/core/Checkbox";
 import Input from "@material-ui/core/Input";
 import InputLabel from "@material-ui/core/InputLabel";
-import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
+import FindInPageIcon from "@material-ui/icons/FindInPage";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import withStyles from "@material-ui/core/styles/withStyles";
-import { history } from "../helpers";
+import jwtDecode from "jwt-decode";
+import { history, responseHandler } from "../helpers";
 
 const styles = theme => ({
   main: {
@@ -52,8 +51,7 @@ class SignIn extends React.Component {
     super(props);
 
     // reset login status
-    // this.props.dispatch(userActions.logout());
-    sessionStorage.removeItem("user");
+    localStorage.removeItem("user");
 
     this.state = {
       username: "",
@@ -64,20 +62,34 @@ class SignIn extends React.Component {
     const { name, value } = e.target;
     this.setState({ [name]: value });
   };
+  requestData(name, password) {
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ username: name, password })
+    };
+    let api =
+      process.env.NODE_ENV === "production"
+        ? `https://backend-dot-courserecommender.appspot.com/authenticate`
+        : `http://localhost:4000/authenticate`;
+    fetch(api, requestOptions)
+      .then(responseHandler)
+      .then(response => {
+        let { id, level } = jwtDecode(response);
+        localStorage.setItem(
+          "user",
+          JSON.stringify({ id, level, token: response })
+        );
+        history.push("/home");
+      })
+      .catch(function(error) {
+        window.alert(error);
+      });
+  }
   handleSubmit = e => {
     e.preventDefault();
     const { username, password } = this.state;
-    if (username === "Admin" && password === "Password") {
-      sessionStorage.setItem("user", "Admin");
-      // window.location = "/home";
-      history.push("/home");
-    } else {
-      alert("Invalid username or password");
-    }
-    // const { dispatch } = this.props;
-    // if (username && password) {
-    //     dispatch(userActions.login(username, password));
-    // }
+    this.requestData(username, password);
   };
   render() {
     const { classes } = this.props;
@@ -86,14 +98,16 @@ class SignIn extends React.Component {
         <CssBaseline />
         <Paper className={classes.paper}>
           <Avatar className={classes.avatar}>
-            <LockOutlinedIcon />
+            <FindInPageIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
             Course Recommender
           </Typography>
           <form className={classes.form} onSubmit={this.handleSubmit}>
             <FormControl margin="normal" required fullWidth>
-              <InputLabel htmlFor="username">The Username is Admin</InputLabel>
+              <InputLabel htmlFor="username">
+                Username (A number from 1 to 5000)
+              </InputLabel>
               <Input
                 id="username"
                 name="username"
@@ -104,7 +118,7 @@ class SignIn extends React.Component {
             </FormControl>
             <FormControl margin="normal" required fullWidth>
               <InputLabel htmlFor="password">
-                The Password is Password
+                Password (Same as the username)
               </InputLabel>
               <Input
                 name="password"
@@ -114,10 +128,6 @@ class SignIn extends React.Component {
                 onChange={this.handleChange}
               />
             </FormControl>
-            {/* <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            /> */}
             <Button
               type="submit"
               fullWidth
@@ -151,4 +161,5 @@ SignIn.propTypes = {
 };
 
 const withStylesSignIn = withStyles(styles)(SignIn);
+
 export { withStylesSignIn as SignIn };

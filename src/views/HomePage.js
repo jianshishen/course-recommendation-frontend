@@ -1,5 +1,7 @@
 import React from "react";
 import classNames from "classnames";
+import { connect } from "react-redux";
+import { changeUnits } from "../actions";
 import withStyles from "@material-ui/core/styles/withStyles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Drawer from "@material-ui/core/Drawer";
@@ -16,15 +18,15 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import BookIcon from "@material-ui/icons/Book";
-import FavoriteIcon from "@material-ui/icons/Favorite";
 import BuildIcon from "@material-ui/icons/Build";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
-import { UnitsTable, Recommendation, CourseManagement } from "../components";
-import { history } from "../helpers";
-import logo from "../assets/man.jpg";
-
+import { UnitsTable, Recommendation } from "../components";
+import { history, authHeader, responseHandler } from "../helpers";
+// import logo from "../assets/man.jpg";
 const drawerWidth = 250;
+
+const logo = require(`../assets/${Math.floor(Math.random() * 20)}.jpg`);
 
 const styles = theme => ({
   root: {
@@ -130,11 +132,42 @@ const styles = theme => ({
 });
 
 class HomePage extends React.Component {
+  api =
+    process.env.NODE_ENV === "production"
+      ? `https://backend-dot-courserecommender.appspot.com/courses/${
+          JSON.parse(localStorage.getItem("user")).id
+        }`
+      : `http://localhost:4000/courses/${
+          JSON.parse(localStorage.getItem("user")).id
+        }`;
   state = {
     anchorEl: null,
     open: false,
+    loaded: false,
     current: "Units of Study"
   };
+  componentDidMount() {
+    this.requestData();
+  }
+  async requestData() {
+    const requestOptions = {
+      method: "GET",
+      headers: authHeader()
+    };
+    await fetch(this.api, requestOptions)
+      .then(responseHandler)
+      .then(data => {
+        this.props.changeUnits({ units: data });
+        this.setState({ loaded: true });
+      })
+      .catch(function(error) {
+        if (error === "Invalid Token") {
+          localStorage.removeItem("user");
+          history.push("/home");
+        }
+        window.alert(error);
+      });
+  }
   handleDrawerOpen = () => {
     this.setState({ open: true });
   };
@@ -149,8 +182,7 @@ class HomePage extends React.Component {
     this.setState({ anchorEl: null });
   };
   handleSignout = () => {
-    sessionStorage.removeItem("user");
-    // window.location = "/home";
+    localStorage.removeItem("user");
     history.push("/home");
   };
   handleSidebarClick = event => {
@@ -199,7 +231,7 @@ class HomePage extends React.Component {
               aria-haspopup="true"
               onClick={this.handleMenuClick}
             >
-              <Avatar alt={sessionStorage.getItem("user")} src={logo} />
+              <Avatar alt={localStorage.getItem("user")} src={logo} />
             </IconButton>
             <Menu
               id="simple-menu"
@@ -239,15 +271,6 @@ class HomePage extends React.Component {
             </ListItem>
             <ListItem button>
               <ListItemIcon>
-                <FavoriteIcon />
-              </ListItemIcon>
-              <ListItemText
-                primary="Recommendation"
-                onClick={this.handleSidebarClick}
-              />
-            </ListItem>
-            <ListItem button>
-              <ListItemIcon>
                 <BuildIcon />
               </ListItemIcon>
               <ListItemText
@@ -257,37 +280,52 @@ class HomePage extends React.Component {
             </ListItem>
           </List>
         </Drawer>
-        <main className={classes.content}>
-          <div className={classes.appBarSpacer} />
-          {this.state.current === "Units of Study" && (
-            <div className={classes.tableContainer}>
-              <Typography variant="h4" gutterBottom component="h2">
-                Units of Study
-              </Typography>
-              <UnitsTable />
-            </div>
-          )}
-          {this.state.current === "Recommendation" && (
-            <div>
-              <Typography variant="h4" gutterBottom component="h2">
-                Choose a type of recommendation
-              </Typography>
-              <Recommendation />
-            </div>
-          )}
-          {this.state.current === "Course Management" && (
-            <div>
-              <Typography variant="h4" gutterBottom component="h2">
-                Course Management
-              </Typography>
-              <CourseManagement />
-            </div>
-          )}
-        </main>
+        {this.state.loaded && (
+          <main className={classes.content}>
+            <div className={classes.appBarSpacer} />
+            {this.state.current === "Units of Study" && (
+              <React.Fragment>
+                {this.props.units.length !== 0 && (
+                  <React.Fragment>
+                    <Typography variant="h4" gutterBottom component="h2">
+                      Your completed units of study
+                    </Typography>
+                    <UnitsTable />
+                    <br />
+                  </React.Fragment>
+                )}
+                <Typography variant="h4" gutterBottom component="h2">
+                  Below are the course recommendation options to assist you with
+                  your enrollment
+                </Typography>
+                <Recommendation />
+              </React.Fragment>
+            )}
+            {this.state.current === "Course Management" && (
+              <React.Fragment>
+                <Typography variant="h4" gutterBottom component="h2">
+                  Course Management
+                </Typography>
+                <UnitsTable type="modification" />
+              </React.Fragment>
+            )}
+          </main>
+        )}
       </div>
     );
   }
 }
 
-const withStylesHomePage = withStyles(styles)(HomePage);
+function mapStateToProps(state) {
+  const { units } = state;
+  return {
+    units: units.units
+  };
+}
+
+const withStylesHomePage = connect(
+  mapStateToProps,
+  { changeUnits }
+)(withStyles(styles)(HomePage));
+
 export { withStylesHomePage as HomePage };
