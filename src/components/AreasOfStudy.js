@@ -81,8 +81,16 @@ class AreasOfStudy extends React.Component {
   };
 
   handleClose = value => {
-    this.setState({ selectedValue: value.AOSName, open: false, loaded: false });
-    this.requestData(value.AOSId);
+    if (value === "None") {
+      this.setState({ open: false, loaded: false });
+    } else {
+      this.setState({
+        selectedValue: value.AOSName,
+        open: false,
+        loaded: false
+      });
+      this.requestData(value.AOSId);
+    }
   };
 
   render() {

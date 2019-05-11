@@ -106,7 +106,7 @@ class SignIn extends React.Component {
           <form className={classes.form} onSubmit={this.handleSubmit}>
             <FormControl margin="normal" required fullWidth>
               <InputLabel htmlFor="username">
-                Username (A number from 1 to 5000)
+                Username (An integer from 1 to 5000)
               </InputLabel>
               <Input
                 id="username"

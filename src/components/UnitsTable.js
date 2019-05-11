@@ -31,11 +31,6 @@ const styles = {
   }
 };
 
-const requestOptions = {
-  method: "GET",
-  headers: authHeader()
-};
-
 let id = 0;
 function createData(name, code, semester, area, number) {
   id += 1;
@@ -46,6 +41,10 @@ class UnitsTable extends React.Component {
   state = { datadisplay: [] };
 
   async requestDetail(units) {
+    const requestOptions = {
+      method: "GET",
+      headers: authHeader()
+    };
     let apidata =
       process.env.NODE_ENV === "production"
         ? `https://backend-dot-courserecommender.appspot.com/info/${units}`

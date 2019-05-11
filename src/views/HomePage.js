@@ -146,7 +146,8 @@ class HomePage extends React.Component {
     loaded: false,
     current: "Units of Study"
   };
-  componentDidMount() {
+
+  async componentDidMount() {
     this.requestData();
   }
   async requestData() {
