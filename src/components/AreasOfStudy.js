@@ -16,6 +16,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
 import { UnitsTable } from "./UnitsTable";
 import areas from "../assets/areaofstudy";
+import config from "../config.json";
 import { authHeader, responseHandler, history } from "../helpers";
 
 const styles = {
@@ -50,8 +51,8 @@ class AreasOfStudy extends React.Component {
     };
     let api =
       process.env.NODE_ENV === "production"
-        ? `https://backend-dot-courserecommender.appspot.com/areainfo/${area}`
-        : `http://localhost:4000/areainfo/${area}`;
+        ? `${config.api_prod}/areainfo/${area}`
+        : `${config.api_dev}/areainfo/${area}`;
     await fetch(api, requestOptions)
       .then(responseHandler)
       .then(data => {

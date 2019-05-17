@@ -7,6 +7,7 @@ import Tabs from "@material-ui/core/Tabs";
 import NoSsr from "@material-ui/core/NoSsr";
 import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
+import config from "../config.json";
 import { UnitsTable } from "./UnitsTable";
 import AreasOfStudy from "./AreasOfStudy";
 import { Preferences } from "./Preferences";
@@ -49,13 +50,23 @@ class Recommendation extends React.Component {
       temp.push(c.courseid);
     });
     let api =
-      type === "recwals"
-        ? `https://recommendation-dot-courserecommender.appspot.com/recommendation/wals?studentId=${
+      process.env.NODE_ENV === "production"
+        ? type === "recwals"
+          ? `${config.recs_prod}/recommendation/wals?studentId=${
+              JSON.parse(localStorage.getItem("user")).id
+            }&courses=${temp.join(",")}&level=${
+              JSON.parse(localStorage.getItem("user")).level
+            }&numRecs=5`
+          : `${config.recs_prod}/recommendation/apriori?courses=${temp.join(
+              ","
+            )}&numRecs=5`
+        : type === "recwals"
+        ? `${config.recs_dev}/recommendation/wals?studentId=${
             JSON.parse(localStorage.getItem("user")).id
           }&courses=${temp.join(",")}&level=${
             JSON.parse(localStorage.getItem("user")).level
           }&numRecs=5`
-        : `https://recommendation-dot-courserecommender.appspot.com/recommendation/apriori?courses=${temp.join(
+        : `${config.recs_dev}/recommendation/apriori?courses=${temp.join(
             ","
           )}&numRecs=5`;
     axios

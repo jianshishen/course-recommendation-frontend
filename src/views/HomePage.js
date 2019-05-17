@@ -1,7 +1,7 @@
 import React from "react";
 import classNames from "classnames";
 import { connect } from "react-redux";
-import { changeUnits } from "../actions";
+import { changeUnits, changeLoaded } from "../actions";
 import withStyles from "@material-ui/core/styles/withStyles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Drawer from "@material-ui/core/Drawer";
@@ -23,7 +23,7 @@ import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import { UnitsTable, Recommendation } from "../components";
 import { history, authHeader, responseHandler } from "../helpers";
-// import logo from "../assets/man.jpg";
+import config from "../config.json";
 const drawerWidth = 250;
 
 const logo = require(`../assets/${Math.floor(Math.random() * 20)}.jpg`);
@@ -134,16 +134,15 @@ const styles = theme => ({
 class HomePage extends React.Component {
   api =
     process.env.NODE_ENV === "production"
-      ? `https://backend-dot-courserecommender.appspot.com/courses/${
+      ? `${config.api_prod}/courses/${
           JSON.parse(localStorage.getItem("user")).id
         }`
-      : `http://localhost:4000/courses/${
+      : `${config.api_dev}/courses/${
           JSON.parse(localStorage.getItem("user")).id
         }`;
   state = {
     anchorEl: null,
     open: false,
-    loaded: false,
     current: "Units of Study"
   };
 
@@ -159,7 +158,7 @@ class HomePage extends React.Component {
       .then(responseHandler)
       .then(data => {
         this.props.changeUnits({ units: data });
-        this.setState({ loaded: true });
+        this.props.changeLoaded({ loaded: true });
       })
       .catch(function(error) {
         if (error === "Invalid Token") {
@@ -192,6 +191,7 @@ class HomePage extends React.Component {
   render() {
     const { anchorEl } = this.state;
     const { classes } = this.props;
+
     return (
       <div className={classes.root}>
         <CssBaseline />
@@ -281,7 +281,7 @@ class HomePage extends React.Component {
             </ListItem>
           </List>
         </Drawer>
-        {this.state.loaded && (
+        {this.props.loaded && (
           <main className={classes.content}>
             <div className={classes.appBarSpacer} />
             {this.state.current === "Units of Study" && (
@@ -318,15 +318,16 @@ class HomePage extends React.Component {
 }
 
 function mapStateToProps(state) {
-  const { units } = state;
+  const { units, loaded } = state;
   return {
-    units: units.units
+    units: units.units,
+    loaded: loaded.loaded
   };
 }
 
 const withStylesHomePage = connect(
   mapStateToProps,
-  { changeUnits }
+  { changeUnits, changeLoaded }
 )(withStyles(styles)(HomePage));
 
 export { withStylesHomePage as HomePage };

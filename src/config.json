@@ -1,0 +1,6 @@
+{
+  "api_dev": "http://localhost:4000",
+  "api_prod": "",
+  "recs_dev": "http://127.0.0.1:5000",
+  "recs_prod": ""
+}

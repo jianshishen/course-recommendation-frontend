@@ -1,3 +1,4 @@
 import { combineReducers } from "redux";
 import units from "./units";
-export default combineReducers({ units });
+import loaded from "./loaded";
+export default combineReducers({ units, loaded });

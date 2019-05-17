@@ -11,6 +11,7 @@ import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import withStyles from "@material-ui/core/styles/withStyles";
 import jwtDecode from "jwt-decode";
+import config from "../config.json";
 import { history, responseHandler } from "../helpers";
 
 const styles = theme => ({
@@ -70,8 +71,8 @@ class SignIn extends React.Component {
     };
     let api =
       process.env.NODE_ENV === "production"
-        ? `https://backend-dot-courserecommender.appspot.com/authenticate`
-        : `http://localhost:4000/authenticate`;
+        ? `${config.api_prod}/authenticate`
+        : `${config.api_dev}/authenticate`;
     fetch(api, requestOptions)
       .then(responseHandler)
       .then(response => {

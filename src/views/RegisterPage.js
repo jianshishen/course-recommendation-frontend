@@ -11,6 +11,7 @@ import FindInPageIcon from "@material-ui/icons/FindInPage";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import withStyles from "@material-ui/core/styles/withStyles";
+import config from "../config.json";
 import { history, responseHandler } from "../helpers";
 
 const styles = theme => ({
@@ -69,8 +70,8 @@ class RegisterPage extends React.Component {
     };
     let api =
       process.env.NODE_ENV === "production"
-        ? `https://backend-dot-courserecommender.appspot.com/register`
-        : `http://localhost:4000/register`;
+        ? `${config.api_prod}/register`
+        : `${config.api_dev}/register`;
 
     fetch(api, requestOptions)
       .then(responseHandler)

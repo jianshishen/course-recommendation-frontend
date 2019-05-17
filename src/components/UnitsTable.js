@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { addUnits, deleteUnits } from "../actions";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
@@ -9,6 +10,7 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
+import config from "../config.json";
 import { authHeader, responseHandler } from "../helpers";
 
 const CustomTableCell = withStyles(theme => ({
@@ -40,6 +42,66 @@ function createData(name, code, semester, area, number) {
 class UnitsTable extends React.Component {
   state = { datadisplay: [] };
 
+  async enrolCourse(id) {
+    const requestOptions = {
+      method: "PUT",
+      headers: authHeader()
+    };
+    let api =
+      process.env.NODE_ENV === "production"
+        ? ``
+        : `${config.api_dev}/courses/${
+            JSON.parse(localStorage.getItem("user")).id
+          }/${id}`;
+    await fetch(api, requestOptions).catch(function(error) {
+      window.alert(error);
+    });
+  }
+
+  handleEnrol(coursename, courseid, semester, aosname) {
+    let confirm = window.confirm(`Do you want to enrol ${courseid}?`);
+    if (confirm) {
+      try {
+        this.enrolCourse(courseid);
+        this.props.addUnits({ coursename, courseid, semester, aosname });
+      } catch (err) {
+        window.alert(err);
+      }
+    }
+    window.location.reload();
+  }
+
+  async deleteCourse(id) {
+    const requestOptions = {
+      method: "DELETE",
+      headers: authHeader()
+    };
+    let api =
+      process.env.NODE_ENV === "production"
+        ? ``
+        : `${config.api_dev}/courses/${
+            JSON.parse(localStorage.getItem("user")).id
+          }/${id}`;
+    await fetch(api, requestOptions).catch(function(error) {
+      window.alert(error);
+    });
+  }
+
+  handleDelete(id) {
+    let confirm = window.confirm(`Do you want to delete ${id}?`);
+    if (confirm) {
+      try {
+        this.deleteCourse(id);
+        this.props.deleteUnits({ id });
+        this.setState({
+          datadisplay: this.state.datadisplay.filter(info => info.code !== id)
+        });
+      } catch (err) {
+        window.alert(err);
+      }
+    }
+  }
+
   async requestDetail(units) {
     const requestOptions = {
       method: "GET",
@@ -47,8 +109,8 @@ class UnitsTable extends React.Component {
     };
     let apidata =
       process.env.NODE_ENV === "production"
-        ? `https://backend-dot-courserecommender.appspot.com/info/${units}`
-        : `http://localhost:4000/info/${units}`;
+        ? `${config.api_prod}/info/${units}`
+        : `${config.api_dev}/info/${units}`;
     await fetch(apidata, requestOptions)
       .then(responseHandler)
       .then(rec => {
@@ -88,6 +150,7 @@ class UnitsTable extends React.Component {
 
   render() {
     const { classes, type } = this.props;
+
     return (
       <Paper className={classes.root}>
         <Table className={classes.table}>
@@ -101,9 +164,12 @@ class UnitsTable extends React.Component {
                 <CustomTableCell align="right">Modification</CustomTableCell>
               )}
               {type === "recommendation" && (
-                <CustomTableCell align="right">
-                  Students Enrolled
-                </CustomTableCell>
+                <React.Fragment>
+                  <CustomTableCell align="right">
+                    Students Enrolled
+                  </CustomTableCell>
+                  <CustomTableCell align="right">Enrol</CustomTableCell>
+                </React.Fragment>
               )}
             </TableRow>
           </TableHead>
@@ -148,6 +214,7 @@ class UnitsTable extends React.Component {
                         type="button"
                         variant="contained"
                         color="secondary"
+                        onClick={() => this.handleDelete(n.code)}
                       >
                         Delete
                       </Button>
@@ -190,6 +257,18 @@ class UnitsTable extends React.Component {
                   <TableCell align="right">{n.semester}</TableCell>
                   <TableCell align="right">{n.area}</TableCell>
                   <TableCell align="right">{n.number}</TableCell>
+                  <TableCell align="right">
+                    <Button
+                      type="button"
+                      variant="contained"
+                      color="primary"
+                      onClick={() =>
+                        this.handleEnrol(n.name, n.code, n.semester, n.area)
+                      }
+                    >
+                      Enrol
+                    </Button>
+                  </TableCell>
                 </TableRow>
               ))}
           </TableBody>
@@ -212,7 +291,7 @@ function mapStateToProps(state) {
 
 const withStylesUnitsTable = connect(
   mapStateToProps,
-  null
+  { addUnits, deleteUnits }
 )(withStyles(styles)(UnitsTable));
 
 export { withStylesUnitsTable as UnitsTable };
