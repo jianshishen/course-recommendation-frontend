@@ -164,12 +164,12 @@ class UnitsTable extends React.Component {
                 <CustomTableCell align="right">Modification</CustomTableCell>
               )}
               {type === "recommendation" && (
-                <React.Fragment>
-                  <CustomTableCell align="right">
-                    Students Enrolled
-                  </CustomTableCell>
-                  <CustomTableCell align="right">Enrol</CustomTableCell>
-                </React.Fragment>
+                // <React.Fragment>
+                <CustomTableCell align="right">
+                  Students Enrolled
+                </CustomTableCell>
+                //  <CustomTableCell align="right">Enrol</CustomTableCell>
+                // </React.Fragment>
               )}
             </TableRow>
           </TableHead>
@@ -257,7 +257,7 @@ class UnitsTable extends React.Component {
                   <TableCell align="right">{n.semester}</TableCell>
                   <TableCell align="right">{n.area}</TableCell>
                   <TableCell align="right">{n.number}</TableCell>
-                  <TableCell align="right">
+                  {/* <TableCell align="right">
                     <Button
                       type="button"
                       variant="contained"
@@ -268,7 +268,7 @@ class UnitsTable extends React.Component {
                     >
                       Enrol
                     </Button>
-                  </TableCell>
+                  </TableCell> */}
                 </TableRow>
               ))}
           </TableBody>
