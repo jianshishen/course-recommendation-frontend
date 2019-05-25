@@ -2,5 +2,5 @@
   "api_dev": "http://localhost:4000",
   "api_prod": "https://backend-dot-courserecommender.appspot.com",
   "recs_dev": "http://127.0.0.1:5000",
-  "recs_prod": "https://courserecommender.appspot.com"
+  "recs_prod": "https://recommendation-dot-courserecommender.appspot.com"
 }
